@@ -5,6 +5,13 @@ app_description = "Miho construction managerment"
 app_email = "mrlinhvu1987@gmail.com"
 app_license = "mit"
 
+# Modules
+# ------------------
+app_modules = [
+	"mihocm",
+	"project"
+]
+
 # Apps
 # ------------------
 
