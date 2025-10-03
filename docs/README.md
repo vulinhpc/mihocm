@@ -25,6 +25,16 @@ Thư mục này chứa tài liệu hướng dẫn cho ứng dụng Miho Construc
   - Ví dụ thực tế: Tạo DocType Project
   - Troubleshooting các lỗi thường gặp
 
+### 3. DocTypes Documentation
+- **File**: `doctypes_documentation.md`
+- **Mô tả**: Tài liệu chi tiết về tất cả DocTypes đã tạo trong app
+- **Nội dung**:
+  - Danh sách tất cả DocTypes (Main + Child)
+  - Chi tiết từng field và mục đích
+  - Sơ đồ mối quan hệ giữa các DocTypes
+  - Hướng dẫn sử dụng workflow
+  - Ghi chú kỹ thuật
+
 ## Cách sử dụng
 
 1. Đọc tài liệu trong thư mục này

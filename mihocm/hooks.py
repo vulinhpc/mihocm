@@ -9,7 +9,13 @@ app_license = "mit"
 # ------------------
 app_modules = [
 	"mihocm",
-	"project"
+	"project",
+	"category",
+	"task",
+	"member",
+	"daily_progress_log",
+	"daily_resource_log",
+	"daily_log_photo"
 ]
 
 # Apps
