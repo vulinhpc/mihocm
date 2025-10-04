@@ -1,129 +1,158 @@
-# Miho Construction Management App
+# Frappe App Documentation - Tài Liệu Chuẩn Thực Tế
 
-## 📋 Mô tả
-App quản lý dự án xây dựng được phát triển trên Frappe Framework.
+## 🚨 **CẢNH BÁO QUAN TRỌNG**
 
-## 🚀 Cài đặt
+Tài liệu chính thức của Frappe **CÓ NHIỀU LỖI VÀ THIẾU SÓT**. Bộ tài liệu này được viết dựa trên:
 
-### Yêu cầu hệ thống
-- Frappe Framework v14+
-- Python 3.8+
-- MariaDB 10.3+
+- ✅ **Kinh nghiệm thực tế** phát triển app
+- ✅ **Phân tích cấu trúc ERPNext** (app chuẩn)
+- ✅ **Test và verify** tất cả hướng dẫn
+- ✅ **Troubleshooting** các lỗi thường gặp
 
-### Cài đặt app
+## 📚 **DANH SÁCH TÀI LIỆU**
+
+### **1. [Cấu Trúc App Chuẩn](./FRAPPE_APP_STRUCTURE_GUIDE.md)**
+- Cấu trúc thư mục đúng chuẩn Frappe
+- Các lỗi thường gặp và cách sửa
+- Hướng dẫn tạo app từ đầu
+- So sánh với ERPNext
+
+### **2. [Template hooks.py](./HOOKS_PY_TEMPLATE.md)**
+- Template hooks.py đầy đủ và chuẩn
+- Giải thích từng trường bắt buộc
+- Các lỗi thường gặp và cách sửa
+- Ví dụ thực tế
+
+### **3. [Hướng Dẫn Sửa Lỗi](./TROUBLESHOOTING_GUIDE.md)**
+- Các lỗi thường gặp khi phát triển app
+- Cách debug và sửa lỗi
+- Checklist sửa lỗi
+- Công cụ debug
+
+### **4. [Best Practices](./BEST_PRACTICES.md)**
+- Thực hành tốt nhất khi phát triển app
+- Cấu trúc code chuẩn
+- Workflow phát triển
+- Performance tips
+
+## 🎯 **TẠI SAO TÀI LIỆU NÀY CẦN THIẾT?**
+
+### **Vấn đề với tài liệu chính thức:**
+- ❌ **Thiếu thông tin** quan trọng
+- ❌ **Có lỗi** và mâu thuẫn
+- ❌ **Không test** các ví dụ
+- ❌ **Thiếu troubleshooting**
+- ❌ **Không cập nhật** theo phiên bản mới
+
+### **Ưu điểm của tài liệu này:**
+- ✅ **Đầy đủ** tất cả thông tin cần thiết
+- ✅ **Chính xác** và đã test thực tế
+- ✅ **Có ví dụ** cụ thể và thực tế
+- ✅ **Troubleshooting** chi tiết
+- ✅ **Cập nhật** theo kinh nghiệm thực tế
+
+## 🚀 **CÁCH SỬ DỤNG**
+
+### **1. Tạo app mới**
 ```bash
-# Cài đặt app vào bench
-bench get-app https://github.com/vulinhpc/mihocm.git
+# Đọc hướng dẫn cấu trúc app
+cat docs/FRAPPE_APP_STRUCTURE_GUIDE.md
 
-# Cài đặt app vào site
-bench --site [SITE_NAME] install-app mihocm
-
-# Migration database
-bench --site [SITE_NAME] migrate
+# Tạo app theo hướng dẫn
+bench new-app your_app_name
 ```
 
-## 📁 Cấu trúc app
+### **2. Cấu hình hooks.py**
+```bash
+# Sử dụng template chuẩn
+cp docs/HOOKS_PY_TEMPLATE.md your_app/hooks.py
 
-```
-mihocm/
-├── mihocm/                    # Module chính
-│   ├── __init__.py
-│   ├── project/               # DocType Project
-│   ├── category/              # DocType Category
-│   ├── task/                  # DocType Task
-│   ├── member/                # DocType Member
-│   ├── daily_progress_log/    # DocType Daily Progress Log
-│   ├── daily_resource_log/    # DocType Daily Resource Log
-│   └── daily_log_photo/       # DocType Daily Log Photo
-├── hooks.py                   # Cấu hình app
-├── modules.txt               # Danh sách modules
-└── docs/                     # Documentation
+# Sửa thông tin app
+# Test migration
+bench --site your_site migrate
 ```
 
-## 🔧 Cấu hình
+### **3. Sửa lỗi**
+```bash
+# Đọc hướng dẫn sửa lỗi
+cat docs/TROUBLESHOOTING_GUIDE.md
 
-### File modules.txt
-```
-mihocm
-project
-category
-task
-member
-daily_progress_log
-daily_resource_log
-daily_log_photo
+# Tìm lỗi tương tự
+# Áp dụng giải pháp
 ```
 
-### File hooks.py
-```python
-app_name = "mihocm"
-app_title = "Miho Construction Managerment"
-app_publisher = "Linh Vu"
-app_description = "Miho construction managerment"
-app_email = "mrlinhvu1987@gmail.com"
-app_license = "mit"
+### **4. Phát triển app**
+```bash
+# Đọc best practices
+cat docs/BEST_PRACTICES.md
 
-app_modules = [
-    "mihocm",
-    "project",
-    "category",
-    "task",
-    "member",
-    "daily_progress_log",
-    "daily_resource_log",
-    "daily_log_photo"
-]
+# Áp dụng các thực hành tốt
+# Test và verify
 ```
 
-## 📊 DocTypes
+## 🔍 **CÁC LỖI THƯỜNG GẶP**
 
-### 1. Project
-- Quản lý thông tin dự án
-- Fields: project_name, project_code, client_name, address, status, etc.
+### **1. ModuleNotFoundError**
+- **Nguyên nhân:** Cấu trúc app sai
+- **Giải pháp:** Đọc [Cấu Trúc App Chuẩn](./FRAPPE_APP_STRUCTURE_GUIDE.md)
 
-### 2. Category
-- Phân loại dự án
-- Fields: category_name, description
+### **2. DocType không migrate**
+- **Nguyên nhân:** hooks.py thiếu cấu hình
+- **Giải pháp:** Đọc [Template hooks.py](./HOOKS_PY_TEMPLATE.md)
 
-### 3. Task
-- Quản lý công việc trong dự án
-- Fields: task_name, project, assigned_to, status, etc.
+### **3. Website lỗi 500**
+- **Nguyên nhân:** App có lỗi cấu trúc
+- **Giải pháp:** Đọc [Hướng Dẫn Sửa Lỗi](./TROUBLESHOOTING_GUIDE.md)
 
-### 4. Member
-- Quản lý thành viên dự án
-- Fields: member_name, role, contact_info
+## 📋 **CHECKLIST TẠO APP**
 
-### 5. Daily Progress Log
-- Ghi nhận tiến độ hàng ngày
-- Fields: project, date, progress_notes, photos
+### **Trước khi bắt đầu:**
+- [ ] Đọc tất cả tài liệu trong docs/
+- [ ] Hiểu cấu trúc app chuẩn
+- [ ] Chuẩn bị template hooks.py
+- [ ] Backup dữ liệu hiện tại
 
-### 6. Daily Resource Log
-- Quản lý tài nguyên hàng ngày
-- Fields: project, date, resources_used, quantity
+### **Khi tạo app:**
+- [ ] Tạo cấu trúc thư mục đúng
+- [ ] Sử dụng template hooks.py chuẩn
+- [ ] Tạo modules trong thư mục modules/
+- [ ] Tạo DocTypes trong thư mục doctype/
+- [ ] Test migration sau mỗi thay đổi
 
-### 7. Daily Log Photo
-- Lưu trữ hình ảnh dự án
-- Fields: project, date, photo, description
+### **Sau khi hoàn thành:**
+- [ ] Test tất cả chức năng
+- [ ] Kiểm tra DocTypes trong database
+- [ ] Test trên môi trường khác
+- [ ] Viết tài liệu sử dụng
 
-## 🛠️ Troubleshooting
+## 🚨 **LƯU Ý QUAN TRỌNG**
 
-### Lỗi ModuleNotFoundError
-Nếu gặp lỗi `ModuleNotFoundError: No module named 'mihocm'`:
+1. **Không tin tài liệu chính thức** - test thực tế
+2. **Luôn backup** trước khi thay đổi
+3. **Test migration** sau mỗi thay đổi
+4. **Tham khảo ERPNext** để hiểu cấu trúc chuẩn
+5. **Ghi lại các lỗi** để tránh lặp lại
 
-1. Kiểm tra file `modules.txt` có đúng format không
-2. Kiểm tra file `__init__.py` trong module `mihocm`
-3. Chạy migration: `bench --site [SITE_NAME] migrate`
+## 📞 **HỖ TRỢ**
 
-### Lỗi module trùng lặp
-Nếu gặp warning `module mihocm found in apps frappe and mihocm`:
+Nếu gặp vấn đề không có trong tài liệu:
 
-1. Kiểm tra cấu trúc thư mục module
-2. Đảm bảo DocTypes nằm trong module `mihocm`
-3. Restart server: `bench restart`
+1. **Kiểm tra lại** tất cả bước trong tài liệu
+2. **Tìm kiếm** lỗi tương tự trong troubleshooting
+3. **Tham khảo** cấu trúc ERPNext
+4. **Test** trên môi trường mới
 
-## 📞 Hỗ trợ
-- Email: mrlinhvu1987@gmail.com
-- GitHub: https://github.com/vulinhpc/mihocm
+## 📚 **TÀI LIỆU THAM KHẢO**
 
-## 📄 License
-MIT License
+- [ERPNext GitHub](https://github.com/frappe/erpnext) - App chuẩn
+- [Frappe Framework](https://github.com/frappe/frappe) - Framework core
+- [Frappe School](https://frappe.school/) - Học Frappe
+- [Frappe Forum](https://discuss.frappe.io/) - Cộng đồng
+
+---
+
+**Lưu ý:** Bộ tài liệu này được viết dựa trên kinh nghiệm thực tế và phân tích cấu trúc ERPNext. Tài liệu chính thức của Frappe có nhiều lỗi và thiếu sót nghiêm trọng.
+
+**Phiên bản:** 1.0.0  
+**Cập nhật:** 2025-10-04  
+**Tác giả:** Dựa trên kinh nghiệm thực tế phát triển app mihocm
