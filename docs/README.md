@@ -1,56 +1,129 @@
-# Miho CM Documentation
+# Miho Construction Management App
 
-Thư mục này chứa tài liệu hướng dẫn cho ứng dụng Miho Construction Management.
+## 📋 Mô tả
+App quản lý dự án xây dựng được phát triển trên Frappe Framework.
 
-## Danh sách tài liệu
+## 🚀 Cài đặt
 
-### 1. Workspace Guide
-- **File**: `workspace_guide.md`
-- **Mô tả**: Hướng dẫn chi tiết cách tạo và quản lý Workspace trong Frappe
-- **Nội dung**:
-  - Cách tạo Workspace cơ bản
-  - Thêm shortcuts và links
-  - Các loại shortcuts khác nhau
-  - Troubleshooting các lỗi thường gặp
-  - Ví dụ hoàn chỉnh
+### Yêu cầu hệ thống
+- Frappe Framework v14+
+- Python 3.8+
+- MariaDB 10.3+
 
-### 2. DocType Creation Guide
-- **File**: `doctype_creation_guide.md`
-- **Mô tả**: Hướng dẫn chi tiết cách tạo DocType trong Frappe Framework
-- **Nội dung**:
-  - Quy trình tạo DocType đúng cách
-  - Sử dụng Bench Console (khuyến nghị)
-  - Tạo file JSON và Python (truyền thống)
-  - Các loại Field phổ biến
-  - Ví dụ thực tế: Tạo DocType Project
-  - Troubleshooting các lỗi thường gặp
+### Cài đặt app
+```bash
+# Cài đặt app vào bench
+bench get-app https://github.com/vulinhpc/mihocm.git
 
-### 3. DocTypes Documentation
-- **File**: `doctypes_documentation.md`
-- **Mô tả**: Tài liệu chi tiết về tất cả DocTypes đã tạo trong app
-- **Nội dung**:
-  - Danh sách tất cả DocTypes (Main + Child)
-  - Chi tiết từng field và mục đích
-  - Sơ đồ mối quan hệ giữa các DocTypes
-  - Hướng dẫn sử dụng workflow
-  - Ghi chú kỹ thuật
+# Cài đặt app vào site
+bench --site [SITE_NAME] install-app mihocm
 
-## Cách sử dụng
+# Migration database
+bench --site [SITE_NAME] migrate
+```
 
-1. Đọc tài liệu trong thư mục này
-2. Làm theo hướng dẫn từng bước
-3. Tham khảo ví dụ để hiểu rõ hơn
-4. Liên hệ team phát triển nếu cần hỗ trợ
+## 📁 Cấu trúc app
 
-## Cập nhật tài liệu
+```
+mihocm/
+├── mihocm/                    # Module chính
+│   ├── __init__.py
+│   ├── project/               # DocType Project
+│   ├── category/              # DocType Category
+│   ├── task/                  # DocType Task
+│   ├── member/                # DocType Member
+│   ├── daily_progress_log/    # DocType Daily Progress Log
+│   ├── daily_resource_log/    # DocType Daily Resource Log
+│   └── daily_log_photo/       # DocType Daily Log Photo
+├── hooks.py                   # Cấu hình app
+├── modules.txt               # Danh sách modules
+└── docs/                     # Documentation
+```
 
-Khi có thay đổi mới:
-1. Cập nhật file tài liệu tương ứng
-2. Cập nhật danh sách trong README này
-3. Commit và push lên repository
+## 🔧 Cấu hình
 
-## Liên hệ
+### File modules.txt
+```
+mihocm
+project
+category
+task
+member
+daily_progress_log
+daily_resource_log
+daily_log_photo
+```
 
-- **Developer**: Miho CM Team
-- **Email**: support@mihocm.com
-- **Version**: 1.0.0
+### File hooks.py
+```python
+app_name = "mihocm"
+app_title = "Miho Construction Managerment"
+app_publisher = "Linh Vu"
+app_description = "Miho construction managerment"
+app_email = "mrlinhvu1987@gmail.com"
+app_license = "mit"
+
+app_modules = [
+    "mihocm",
+    "project",
+    "category",
+    "task",
+    "member",
+    "daily_progress_log",
+    "daily_resource_log",
+    "daily_log_photo"
+]
+```
+
+## 📊 DocTypes
+
+### 1. Project
+- Quản lý thông tin dự án
+- Fields: project_name, project_code, client_name, address, status, etc.
+
+### 2. Category
+- Phân loại dự án
+- Fields: category_name, description
+
+### 3. Task
+- Quản lý công việc trong dự án
+- Fields: task_name, project, assigned_to, status, etc.
+
+### 4. Member
+- Quản lý thành viên dự án
+- Fields: member_name, role, contact_info
+
+### 5. Daily Progress Log
+- Ghi nhận tiến độ hàng ngày
+- Fields: project, date, progress_notes, photos
+
+### 6. Daily Resource Log
+- Quản lý tài nguyên hàng ngày
+- Fields: project, date, resources_used, quantity
+
+### 7. Daily Log Photo
+- Lưu trữ hình ảnh dự án
+- Fields: project, date, photo, description
+
+## 🛠️ Troubleshooting
+
+### Lỗi ModuleNotFoundError
+Nếu gặp lỗi `ModuleNotFoundError: No module named 'mihocm'`:
+
+1. Kiểm tra file `modules.txt` có đúng format không
+2. Kiểm tra file `__init__.py` trong module `mihocm`
+3. Chạy migration: `bench --site [SITE_NAME] migrate`
+
+### Lỗi module trùng lặp
+Nếu gặp warning `module mihocm found in apps frappe and mihocm`:
+
+1. Kiểm tra cấu trúc thư mục module
+2. Đảm bảo DocTypes nằm trong module `mihocm`
+3. Restart server: `bench restart`
+
+## 📞 Hỗ trợ
+- Email: mrlinhvu1987@gmail.com
+- GitHub: https://github.com/vulinhpc/mihocm
+
+## 📄 License
+MIT License
