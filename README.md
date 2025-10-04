@@ -1,150 +1,114 @@
-# Miho Construction Management
+# 🏗️ Miho Construction Management (MihoCM)
 
-Miho Construction Management (Miho CM) là ứng dụng quản lý xây dựng được phát triển trên nền tảng Frappe Framework, cung cấp các tính năng quản lý dự án, nhân viên, khách hàng và vật liệu xây dựng.
+## 📋 Mô Tả Dự Án
 
-## 🎯 Tính năng chính
+**MihoCM** là một ứng dụng quản lý dự án xây dựng được phát triển trên nền tảng Frappe Framework. Ứng dụng cung cấp các tính năng quản lý toàn diện cho các dự án xây dựng, từ lập kế hoạch đến theo dõi tiến độ và quản lý tài nguyên.
 
-- 📁 **Quản lý dự án**: Theo dõi tiến độ và chi phí dự án
-- ✅ **Quản lý công việc**: Phân công và theo dõi tasks theo hạng mục
-- 👥 **Quản lý thành viên**: Phân quyền theo vai trò (Owner/PM/Engineer/Supervisor/QC)
-- 📝 **Nhật ký tiến độ**: Báo cáo tiến độ cho khách hàng với workflow approval
-- 📈 **Nhật ký nguồn lực**: Quản lý nhân công, vật tư, máy móc nội bộ
-- 📸 **Minh chứng**: Lưu trữ ảnh và tài liệu minh chứng
-- 🏗️ **Workspace tùy chỉnh**: Giao diện được tối ưu cho ngành xây dựng
+## 🎯 Tính Năng Chính
 
-## 📋 DocTypes đã tạo
+### **1. Quản Lý Dự Án (Project Management)**
+- Tạo và quản lý các dự án xây dựng
+- Theo dõi tiến độ tổng thể
+- Quản lý thông tin dự án chi tiết
 
-### Main DocTypes (6)
-- **Project**: Quản lý thông tin dự án chính
-- **Category**: Phân chia dự án thành hạng mục
-- **Task**: Quản lý các đầu việc cụ thể
-- **Member**: Quản lý thành viên và vai trò
-- **Daily Progress Log**: Báo cáo tiến độ cho khách hàng
-- **Daily Resource Log**: Quản lý nguồn lực nội bộ
+### **2. Phân Loại Công Việc (Category Management)**
+- Tạo các danh mục công việc cho dự án
+- Thiết lập trọng số tiến độ
+- Quản lý thời gian dự kiến
 
-### Child DocTypes (3)
-- **Daily Log Photo**: Lưu trữ ảnh minh chứng
-- **Daily Progress Log Task**: Liên kết tasks với nhật ký
-- **Daily Resource Log Issue**: Ghi nhận vấn đề phát sinh
+### **3. Quản Lý Nhiệm Vụ (Task Management)**
+- Tạo và phân công nhiệm vụ cụ thể
+- Theo dõi số lượng kế hoạch vs thực tế
+- Quản lý đơn vị đo lường (m2, m3, tấn, bộ, kg, litre, piece)
 
-## 🚀 Cài đặt
+### **4. Quản Lý Thành Viên (Member Management)**
+- Quản lý thành viên tham gia dự án
+- Phân quyền theo vai trò (Owner, PM, Engineer, Supervisor, QC)
+- Theo dõi trạng thái hoạt động
 
-### Yêu cầu hệ thống
-- Python 3.8+
-- Node.js 14+
-- MariaDB 10.3+
-- Redis 6.0+
-- Frappe Framework 15+
+### **5. Ghi Nhận Tiến Độ (Daily Progress Log)**
+- Ghi nhận tiến độ hàng ngày
+- Cập nhật số lượng thực tế
+- Ghi chú và báo cáo chi tiết
 
-### Cài đặt nhanh
+### **6. Quản Lý Tài Nguyên (Daily Resource Log)**
+- Theo dõi nhân lực, thiết bị, vật liệu
+- Ghi nhận số lượng sử dụng
+- Quản lý đơn vị đo lường
 
-```bash
-# Tạo site mới
-bench new-site mihocm.dev
+### **7. Ghi Nhận Hình Ảnh (Daily Log Photo)**
+- Lưu trữ hình ảnh tiến độ dự án
+- Mô tả chi tiết từng hình ảnh
+- Theo dõi tiến độ trực quan
 
-# Cài đặt app
-bench --site mihocm.dev install-app mihocm
-
-# Migration database
-bench --site mihocm.dev migrate
-
-# Build assets
-bench --site mihocm.dev build
-
-# Khởi động server
-bench start
-```
-
-### Cài đặt chi tiết
-Xem [Hướng dẫn cài đặt](docs/installation_guide.md) để biết thêm chi tiết.
-
-## 📚 Tài liệu
-
-- 📖 [Hướng dẫn cài đặt](docs/installation_guide.md)
-- 🏗️ [Hướng dẫn tạo Workspace](docs/workspace_guide.md)
-- 📋 [Tài liệu DocTypes](docs/doctypes_documentation.md)
-- 🛠️ [Hướng dẫn tạo DocType](docs/doctype_creation_guide.md)
-- 📚 [Tài liệu đầy đủ](docs/README.md)
-
-## 🏗️ Cấu trúc dự án
+## 🏗️ Cấu Trúc Ứng Dụng
 
 ```
 mihocm/
 ├── mihocm/
-│   ├── doctype/           # Tất cả DocTypes
-│   │   ├── project/
-│   │   ├── category/
-│   │   ├── task/
-│   │   ├── member/
-│   │   ├── daily_progress_log/
-│   │   ├── daily_resource_log/
-│   │   └── daily_log_photo/
-│   ├── config/            # Cấu hình app
-│   ├── public/            # Assets tĩnh
-│   └── www/               # Portal pages
-├── docs/                  # Tài liệu
-└── README.md
+│   ├── doctype/
+│   │   ├── project/           # Quản lý dự án
+│   │   ├── category/          # Phân loại công việc
+│   │   ├── task/              # Quản lý nhiệm vụ
+│   │   ├── member/            # Quản lý thành viên
+│   │   ├── daily_progress_log/    # Ghi nhận tiến độ
+│   │   ├── daily_resource_log/    # Quản lý tài nguyên
+│   │   └── daily_log_photo/       # Ghi nhận hình ảnh
+│   ├── hooks.py               # Cấu hình ứng dụng
+│   └── modules.txt            # Danh sách modules
+├── docs/                      # Tài liệu
+├── README.md                  # Mô tả dự án
+└── INSTALLATION.md            # Hướng dẫn cài đặt
 ```
 
-## 🔄 Workflow chính
+## 🚀 Cài Đặt
 
-1. **Tạo dự án** → Project
-2. **Phân hạng mục** → Category
-3. **Tạo đầu việc** → Task
-4. **Thêm thành viên** → Member
-5. **Báo cáo tiến độ** → Daily Progress Log
-6. **Quản lý nguồn lực** → Daily Resource Log
+Xem chi tiết hướng dẫn cài đặt tại [INSTALLATION.md](docs/INSTALLATION.md)
 
-## 📊 Trạng thái phát triển
+### **Cài đặt nhanh:**
+```bash
+# Cài app
+bench get-app mihocm
 
-- ✅ **DocTypes**: Hoàn thành 100%
-- ✅ **Database**: Migration thành công
-- ✅ **Workspace**: Đã tạo và cấu hình
-- 🔄 **UI/UX**: Đang phát triển
-- 🔄 **Mobile App**: Kế hoạch
-- 🔄 **Reports**: Kế hoạch
+# Cài vào site
+bench --site [site_name] install-app mihocm
 
-## 🤝 Đóng góp
+# Migrate
+bench --site [site_name] migrate
+```
 
-1. Fork repository
-2. Tạo feature branch
-3. Commit changes
-4. Push to branch
-5. Tạo Pull Request
+## 📊 DocTypes
 
-## 📄 License
+| DocType | Mô Tả | Trạng Thái |
+|---------|-------|------------|
+| **Project** | Quản lý dự án xây dựng | ✅ Hoàn thành |
+| **Category** | Phân loại công việc | ✅ Hoàn thành |
+| **Task** | Quản lý nhiệm vụ | ✅ Hoàn thành |
+| **Member** | Quản lý thành viên | ✅ Hoàn thành |
+| **Daily Progress Log** | Ghi nhận tiến độ | ✅ Hoàn thành |
+| **Daily Resource Log** | Quản lý tài nguyên | ✅ Hoàn thành |
+| **Daily Log Photo** | Ghi nhận hình ảnh | ✅ Hoàn thành |
+
+## 🔧 Yêu Cầu Hệ Thống
+
+- **Frappe Framework**: v14+
+- **Python**: 3.8+
+- **MariaDB**: 10.3+
+- **Node.js**: 14+
+- **Redis**: 6.0+
+
+## 📝 License
 
 MIT License - Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
 
-## 📞 Liên hệ
+## 👥 Tác Giả
 
-- **Developer**: Miho CM Team
-- **Email**: support@mihocm.com
-- **Version**: 1.0.0
+**Linh Vu** - mrlinhvu1987@gmail.com
 
-### Contributing
+## 📞 Hỗ Trợ
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+Nếu gặp vấn đề trong quá trình sử dụng, vui lòng tạo issue trên GitHub hoặc liên hệ trực tiếp qua email.
 
-```bash
-cd apps/mihocm
-pre-commit install
-```
+---
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
-
-- ruff
-- eslint
-- prettier
-- pyupgrade
-
-### CI
-
-This app can use GitHub Actions for CI. The following workflows are configured:
-
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
-
-### License
-
-mit
+**MihoCM** - Giải pháp quản lý dự án xây dựng toàn diện và hiệu quả! 🏗️✨

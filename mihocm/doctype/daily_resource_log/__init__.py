@@ -1,0 +1,1 @@
+# Daily Resource Log DocType

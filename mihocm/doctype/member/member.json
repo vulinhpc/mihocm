@@ -1,0 +1,56 @@
+{
+    "doctype": "DocType",
+    "name": "Member",
+    "module": "mihocm",
+    "fields": [
+        {
+            "fieldname": "project",
+            "fieldtype": "Link",
+            "label": "Project",
+            "options": "Project",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "user",
+            "fieldtype": "Link",
+            "label": "User",
+            "options": "User",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "role",
+            "fieldtype": "Select",
+            "label": "Role",
+            "options": "Owner\nPM\nEngineer\nSupervisor\nQC",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "active",
+            "fieldtype": "Check",
+            "label": "Active",
+            "default": 1
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "export": 1,
+            "print": 1,
+            "email": 1,
+            "report": 1,
+            "share": 1
+        }
+    ],
+    "naming_rule": "By fieldname",
+    "autoname": "field:user",
+    "default_view": "List",
+    "editable_grid": 1,
+    "track_changes": 1
+}

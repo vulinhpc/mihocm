@@ -1,8 +1,7 @@
-mihocm
-project
-category
-task
-member
-daily_progress_log
-daily_resource_log
-daily_log_photo
+Project
+Category
+Task
+Member
+Daily Progress Log
+Daily Resource Log
+Daily Log Photo

@@ -1,0 +1,77 @@
+{
+    "doctype": "DocType",
+    "name": "Task",
+    "module": "mihocm",
+    "fields": [
+        {
+            "fieldname": "project",
+            "fieldtype": "Link",
+            "label": "Project",
+            "options": "Project",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "category",
+            "fieldtype": "Link",
+            "label": "Category",
+            "options": "Category",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "task_name",
+            "fieldtype": "Data",
+            "label": "Task Name",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "unit",
+            "fieldtype": "Select",
+            "label": "Unit",
+            "options": "m2\nm3\ntấn\nbộ\nkg\nlitre\npiece"
+        },
+        {
+            "fieldname": "planned_quantity",
+            "fieldtype": "Float",
+            "label": "Planned Quantity"
+        },
+        {
+            "fieldname": "actual_quantity",
+            "fieldtype": "Float",
+            "label": "Actual Quantity",
+            "read_only": 1
+        },
+        {
+            "fieldname": "assignee",
+            "fieldtype": "Link",
+            "label": "Assignee",
+            "options": "User"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "export": 1,
+            "print": 1,
+            "email": 1,
+            "report": 1,
+            "share": 1
+        }
+    ],
+    "naming_rule": "By fieldname",
+    "autoname": "field:task_name",
+    "default_view": "List",
+    "editable_grid": 1,
+    "track_changes": 1
+}

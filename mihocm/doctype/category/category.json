@@ -1,0 +1,61 @@
+{
+    "doctype": "DocType",
+    "name": "Category",
+    "module": "mihocm",
+    "fields": [
+        {
+            "fieldname": "project",
+            "fieldtype": "Link",
+            "label": "Project",
+            "options": "Project",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "category_name",
+            "fieldtype": "Data",
+            "label": "Category Name",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "planned_start",
+            "fieldtype": "Date",
+            "label": "Planned Start"
+        },
+        {
+            "fieldname": "planned_end",
+            "fieldtype": "Date",
+            "label": "Planned End"
+        },
+        {
+            "fieldname": "progress_weight",
+            "fieldtype": "Float",
+            "label": "Progress Weight (%)"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Small Text",
+            "label": "Notes"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "export": 1,
+            "print": 1,
+            "email": 1,
+            "report": 1,
+            "share": 1
+        }
+    ],
+    "naming_rule": "By fieldname",
+    "autoname": "field:category_name",
+    "default_view": "List",
+    "editable_grid": 1,
+    "track_changes": 1
+}
