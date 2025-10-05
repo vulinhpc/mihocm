@@ -1,7 +1,7 @@
 {
     "doctype": "DocType",
     "name": "Category",
-    "module": "mihocm",
+ "module": "MihoCM",
     "fields": [
         {
             "fieldname": "project",
