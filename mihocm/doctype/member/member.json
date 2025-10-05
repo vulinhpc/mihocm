@@ -1,7 +1,7 @@
 {
     "doctype": "DocType",
     "name": "Member",
-    "module": "mihocm",
+ "module": "MihoCM",
     "fields": [
         {
             "fieldname": "project",

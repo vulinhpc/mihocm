@@ -1,15 +1,13 @@
 [project]
 name = "mihocm"
+version = "0.0.1"
 authors = [
     { name = "Linh Vu", email = "mrlinhvu1987@gmail.com"}
 ]
 description = "Miho construction managerment"
 requires-python = ">=3.10"
 readme = "README.md"
-dynamic = ["version"]
-dependencies = [
-    # "frappe~=15.0.0" # Installed and managed by bench.
-]
+dependencies = []
 
 [build-system]
 requires = ["flit_core >=3.4,<4"]

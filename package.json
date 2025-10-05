@@ -1,0 +1,14 @@
+{
+  "name": "mihocm",
+  "version": "0.0.1",
+  "description": "Miho Construction Management Frappe app",
+  "license": "MIT",
+  "scripts": {
+    "build": "frappe build",
+    "watch": "frappe watch",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
